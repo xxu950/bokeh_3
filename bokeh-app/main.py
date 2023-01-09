@@ -5,6 +5,7 @@ Created on Sun Jan  8 10:52:53 2023
 @author: xxu
 """
 #Import the required packages
+from os.path import join, dirname
 from bokeh.io import curdoc
 from bokeh.models import ColumnDataSource, CategoricalColorMapper
 from bokeh.plotting import figure
@@ -12,7 +13,7 @@ from bokeh.palettes import Spectral5
 import pandas as pd
 from bokeh.models import HoverTool
 #Read the data into the notebook
-df = pd.read_csv('data/all_stocks_5yr.csv')
+df = pd.read_csv(join(dirname(__file__), 'data/all_stocks_5yr.csv'))
 df['date'] = pd.to_datetime(df['date']).apply(lambda x:x.strftime('%Y'))
 #List the tech giants
 tech_giants = ['GOOGL', 'FB', 'MSFT', 'AMZN', 'AAPL']
